@@ -15,7 +15,27 @@ $(document).ready(function(){
       ,"setScore"
     ).then(function(data){
       console.log(data);
-      updateFlg();
+      callStored(
+        null
+        ,"rankSet"
+      ).then(function(data){
+        console.log(data);
+        callStored(
+          null
+          ,"rankScoreSet"
+        ).then(function(data){
+          console.log(data);
+          updateFlg();
+        },function(){
+          console.log("err");
+        }).catch(
+          err => alert(err)
+        );
+      },function(){
+        console.log("err");
+      }).catch(
+      err => alert(err)
+      );
     },function(){
       console.log("err");
     }).catch(
@@ -32,7 +52,6 @@ function updateFlg(){
     ,"updateGameFlg"
   ).then(function(data){
     console.log(data);
-
     location.reload();
   },function(){
     console.log("err");

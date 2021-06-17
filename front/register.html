@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<?php
+    readfile($_SERVER['DOCUMENT_ROOT']."/sparrow/front/common/template/htmlHeader.html");
+?>
+
+<link rel="stylesheet" href="/sparrow/front/css/register.css" type="text/css" media="screen">
+<script src="/sparrow/js/register.js"></script>
+<script type="text/javascript">
+</script>
+</head>
+<body>
+<form class="form-signin">
+
+  <img class="mb-4 chun" src="/sparrow/img/d9f1e92494fac5005b5cd8db46b0bf47.png" alt="どっとちゅん">
+  <h1 class="h3 mb-3 font-weight-normal text_explain">では　はじめに　きみの　なまえを<br>おしえて　もらおう！　　　　　　▼</h1>
+  <input type="text" id="inputName" class="form-control" placeholder="おなまえ" required autofocus>
+  <button class="btn btn-lg btn-primary btn-block yes" type="button">はい</button>
+  <button class="btn btn-lg btn-primary btn-block no" type="button">いいえ</button>
+</form>
+<?php
+    readfile($_SERVER['DOCUMENT_ROOT']."/sparrow/front/common/template/htmlFooter.html");
+?>
+</html>

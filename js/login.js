@@ -1,11 +1,11 @@
 $(document).ready(function(){
   $(".joinButton").on("click",function(){
     // ajaxで処理を飛ばす
-    defaultAjax(
+    callStored(
       {
         id:$("#inputID").val()
       }
-      ,"/sparrow/server/login.php"
+      ,"getUser"
     ).then(function(data){
       console.log(data);
       // ID誤り
@@ -13,13 +13,16 @@ $(document).ready(function(){
         window.alert("IDが間違っています");
       }
 
+      document.cookie = "user_num=" + data[0]["USER_NUM"];
+      document.cookie = "user_id=" + data[0]["USER_ID"];
+
       // ユーザ名が登録されていない
-      if(data["USER_NAME"] == ""){
+      if(data[0]["USER_NAME"] == ""){
         location.href = "/sparrow/front/register.html";
       }
 
-      // ユーザ名が登録されている場合
-      if(data["USER_NAME"] != ""){
+      // ユーザ名が登録されている
+      if(data[0]["USER_NAME"] != ""){
         location.href = "/sparrow/front/home.html";
       }
     },function(){

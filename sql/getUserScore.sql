@@ -56,7 +56,7 @@ BEGIN
               on mu.USER_NUM = sc.USER_NUM
             WHERE
                 mu.USER_NUM = '",_user_num,"'
-            order by sc.table_sub_num desc
+            order by sc.table_sub_num asc
             ;
         ")
         ;

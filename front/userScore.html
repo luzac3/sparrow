@@ -1,0 +1,85 @@
+<?php
+    $root = $_SERVER["DOCUMENT_ROOT"];
+    require_once $root . '/sparrow/server/getUserScore.php';
+?>
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="/sparrow/front/css/home.css" type="text/css" media="screen">
+<?php
+    readfile($_SERVER['DOCUMENT_ROOT']."/sparrow/front/common/template/htmlHeader.html");
+?>
+</head>
+<body>
+  <div class="container">
+  <h1 id="title" class="d-flex align-items-center justify-content-center">点数確認
+<?php
+    if(!empty($_GET["user_num"])){
+      echo "(";
+      echo $myScore[0]["user_name"];
+      echo ")";
+    }
+?>
+  </h1>
+<?php
+    readfile($_SERVER['DOCUMENT_ROOT']."/sparrow/front/common/template/header.html");
+?>
+    <div class="home_main">
+      <h1 class="h3 mb-3 font-weight-normal">スコア一覧</h1>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">卓番号</th>
+            <th scope="col">卓ゲーム回数</th>
+            <th scope="col">順位</th>
+            <th scope="col">点数</th>
+          </tr>
+        </thead>
+        <tbody>
+<?php
+        // 合計点数
+        $sumScore = 0;
+
+        forEach($myScore as $val){
+          echo "<tr>\n";
+          if($val["rank"] == null || $val["rank"] == ""){
+            echo "<td colspan='4'>集計中</td>\n";
+            continue;
+          }
+          echo "<td>" . $val["table_num"] . "</td>\n";
+          echo "<td>" . $val["table_sub_num"] . "</td>\n";
+          echo "<td>" . $val["rank"] . "</td>\n";
+          $sumScore += $val["rank_score"];
+          if($val["rank_score"] >= 0){
+            echo "<td>+ " . number_format($val["rank_score"], 1) . "</td>\n";
+          }else{
+            echo "<td>- " . number_format($val["rank_score"], 1) . "</td>\n";
+          }
+          echo "<tr>\n";
+        }
+?>
+        </tbody>
+      </table>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col" colspan="4">合計得点</th>
+          </tr>
+        </thead>
+        <tbody>
+<?php
+        if($sumScore >= 0){
+          echo "<td colspan='4'>+ " . number_format($sumScore, 1) . "</td>\n";
+        }else{
+          echo "<td>- " . number_format($sumScore, 1) . "</td>\n";
+        }
+?>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+<?php
+    readfile($_SERVER['DOCUMENT_ROOT']."/sparrow/front/common/template/htmlFooter.html");
+?>
+</html>

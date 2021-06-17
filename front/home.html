@@ -1,14 +1,41 @@
+<?php
+    $root = $_SERVER["DOCUMENT_ROOT"];
+    require_once $root . '/sparrow/server/getAllUserData.php';
+?>
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="/sparrow/front/css/home.css" type="text/css" media="screen">
 <?php
     readfile($_SERVER['DOCUMENT_ROOT']."/sparrow/front/common/template/htmlHeader.html");
 ?>
+<script src="/sparrow/js/home.js"></script>
 </head>
 <body>
+  <div class="container">
+  <h1 id="title" class="d-flex align-items-center justify-content-center">ホーム</h1>
 <?php
     readfile($_SERVER['DOCUMENT_ROOT']."/sparrow/front/common/template/header.html");
 ?>
+    <div class="home_main">
+      <img class="mb-4 chun" src="/sparrow/img/bird_suzume_9916.png" alt="ちゅん">
+<?php
+      if($gameFLg == 1){
+echo <<<EOF
+        <h1 class="h3 mb-3 font-weight-normal">ゲーム中にゃ</h1>
+        <input type="number" id="table_number" class="table_number score_input" placeholder="卓番号" required autofocus>
+        <input type="number" id="score" class="score score_input" placeholder="スコア" required autofocus>
+        <button class="btn btn-lg btn-primary btn-block scoreSet" type="button">点数確定にゃ</button>
+EOF;
+      }else{
+echo <<<EOF
+        <h1 class="h3 mb-3 font-weight-normal">フリーにゃ</h1>
+        <button class="btn btn-lg btn-primary btn-block joinButton" type="button">ゲーム開始にゃ</button>
+EOF;
+      }
+?>
+    </div>
+  </div>
 <?php
     readfile($_SERVER['DOCUMENT_ROOT']."/sparrow/front/common/template/htmlFooter.html");
 ?>

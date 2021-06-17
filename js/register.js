@@ -11,8 +11,6 @@ $(document).ready(function(){
       console.log(data);
 
       if(data["exit_cd"] == 0){
-        // ユーザ情報をCookieに登録
-        document.cookie = "user_name=" + encodeURI($("#inputName").val());
 
         location.href = "/sparrow/front/home.html";
       }

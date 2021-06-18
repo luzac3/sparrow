@@ -1,0 +1,65 @@
+<?php
+    $root = $_SERVER["DOCUMENT_ROOT"];
+    require_once $root . '/sparrow/server/getRanking.php';
+?>
+<!DOCTYPE html>
+<html>
+<head>
+<?php
+    readfile($_SERVER['DOCUMENT_ROOT']."/sparrow/front/common/template/htmlHeader.html");
+?>
+<title>雀オフ　順位表</title>
+</head>
+<body>
+  <div class="container">
+  <h1 id="title" class="d-flex align-items-center justify-content-center">順位表
+<?php
+    if(!empty($_GET["user_num"])){
+      echo "(";
+      echo $myScore[0]["user_name"];
+      echo ")";
+    }
+?>
+  </h1>
+<?php
+    readfile($_SERVER['DOCUMENT_ROOT']."/sparrow/front/common/template/header.html");
+?>
+    <div class="main">
+      <h1 class="h3 mb-3 font-weight-normal">順位</h1>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">順位</th>
+            <th scope="col">名前</th>
+            <th scope="col">合計点数</th>
+          </tr>
+        </thead>
+        <tbody>
+<?php
+        if(empty($ranking)){
+          echo "<tr>\n";
+          echo "<td>{&user}がありません</td>\n";
+          echo "</tr>\n";
+        }else{
+          forEach($ranking as $val){
+            echo "<tr>\n";
+            echo "<td>" . $val["rank"] . "</td>\n";
+            echo "<td><a href='userScore.html?user_num=" . $val["USER_NUM"] . "'>" . $val["USER_NAME"] . "</a></td>\n";
+            if($val["rank_score"] >= 0){
+              echo "<td>+ " . number_format($val["rank_score"], 1) . "</td>\n";
+            }else{
+              echo "<td>- " . number_format(abs($val["rank_score"]), 1) . "</td>\n";
+            }
+            echo "<tr>\n";
+          }
+        }
+?>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+<?php
+    readfile($_SERVER['DOCUMENT_ROOT']."/sparrow/front/common/template/htmlFooter.html");
+?>
+</html>

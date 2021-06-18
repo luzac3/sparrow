@@ -11,6 +11,7 @@ DELIMITER //
 --   ログイン
 --
 -- 【引数】
+--  _user_num           : ユーザ番号
 --
 --
 -- 【戻り値】
@@ -22,7 +23,8 @@ DELIMITER //
 --  2019.8.15 大杉　新規作成
 -- ********************************************************************************************
 CREATE PROCEDURE `rankSet`(
-    OUT `exit_cd` INTEGER
+    IN  `_user_num` char(2)
+    , OUT `exit_cd` INTEGER
 )
 
 COMMENT 'スコアランク更新処理'
@@ -44,9 +46,25 @@ BEGIN
             SELECT user_num,table_num,table_sub_num,FIND_IN_SET(
               score
               , (
-                SELECT GROUP_CONCAT(
-                  score ORDER BY score DESC
-                ) FROM score
+                SELECT
+                  GROUP_CONCAT(
+                    score
+                    ORDER BY score DESC
+                  )
+                FROM score
+                where rank is null
+                and table_num = (
+                  select table_num
+                  from score
+                  where user_num = '",_user_num,"'
+                  and rank is null
+                )
+                and table_sub_num = (
+                  select table_sub_num
+                  from score
+                  where user_num = '",_user_num,"'
+                  and rank is null
+                )
               )
             ) as new_rank
             from score
@@ -59,6 +77,19 @@ BEGIN
             select end_game_num from (
               select count(*) as end_game_num
               from score
+              where rank is null
+              and table_num = (
+                select table_num
+                from score
+                where user_num = '",_user_num,"'
+                and rank is null
+              )
+              and table_sub_num = (
+                select table_sub_num
+                from score
+                where user_num = '",_user_num,"'
+                and rank is null
+              )
               group by table_num,table_sub_num
             ) as temp2
           ) = 4

@@ -51,7 +51,7 @@ BEGIN
                 ,'",_table_number,"'
                 ,(
                   select distinct new_table_num from (
-                    select count(*) / 4 + 1 as new_table_num from score where table_num = '",_user_num,"'
+                    select TRUNCATE(count(*) / 4, 0) + 1 as new_table_num from score where table_num = '",_table_number,"'
                   ) as temp
                 )
                 ,",_score,"

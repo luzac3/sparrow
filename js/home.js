@@ -16,7 +16,9 @@ $(document).ready(function(){
     ).then(function(data){
       console.log(data);
       callStored(
-        null
+        {
+          user_num:searchCookie("user_num")
+        }
         ,"rankSet"
       ).then(function(data){
         console.log(data);

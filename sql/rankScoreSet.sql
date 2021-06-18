@@ -41,10 +41,10 @@ BEGIN
         SET @query = CONCAT("
           update score set rank_score = (
             CASE
-              WHEN rank = '1' THEN score / 1000 + 30
-              WHEN rank = '2' THEN score / 1000 + 5
-              WHEN rank = '3' THEN score / 1000 - 5
-              WHEN rank = '4' THEN score / 1000 - 10
+              WHEN rank = '1' THEN (score - 30000) / 1000 + 30
+              WHEN rank = '2' THEN (score - 30000) / 1000 + 5
+              WHEN rank = '3' THEN (score - 30000) / 1000 - 5
+              WHEN rank = '4' THEN (score - 30000) / 1000 - 10
               ELSE null
             END
           )

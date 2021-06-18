@@ -9,8 +9,9 @@ $(document).ready(function(){
     ).then(function(data){
       console.log(data);
       // ID誤り
-      if(data == null){
+      if(data == null || data == "データ取得エラー"){
         window.alert("IDが間違っています");
+        return;
       }
 
       document.cookie = "user_num=" + data[0]["USER_NUM"];

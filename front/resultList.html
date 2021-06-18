@@ -1,0 +1,106 @@
+<?php
+    $root = $_SERVER["DOCUMENT_ROOT"];
+    require_once $root . '/sparrow/common/php/callStored.php';
+    $score = callStored("getResult",null);
+?>
+<!DOCTYPE html>
+<html>
+<head>
+<?php
+    readfile($_SERVER['DOCUMENT_ROOT']."/sparrow/front/common/template/htmlHeader.html");
+?>
+<title>雀オフ　結果一覧</title>
+</head>
+<body>
+  <div class="container">
+  <h1 id="title" class="d-flex align-items-center justify-content-center">結果一覧</h1>
+<?php
+    readfile($_SERVER['DOCUMENT_ROOT']."/sparrow/front/common/template/header.html");
+?>
+    <div class="main">
+      <h1 class="h3 mb-3 font-weight-normal">結果一覧
+        <?php
+          if(!empty($_GET["user_num"])){
+            echo "(";
+            echo $myScore[0]["USER_NAME"];
+            echo ")";
+          }
+        ?>
+      </h1>
+      <table class="table">
+
+<?php
+
+        $tempTableNumber = 0;
+        $tempTableSubNumber = 0;
+
+        if(empty($score)){
+echo <<<EOF
+                      <thead>
+                        <tr>
+                          <td>
+                              失敗した失敗した失敗した失敗した
+                              <br>
+                              失敗した失敗した失敗した失敗した
+                              <br>
+                              失敗した失敗した失敗した失敗した
+                              <br>
+                              失敗した失敗した失敗した失敗した
+                              <br>
+                              失敗した失敗した失敗した失敗した
+                              <br><br>
+
+                              あたしは失敗した失敗した失敗した
+                              <br>
+                              失敗した失敗した失敗した失敗した
+                              <br>
+                              失敗した失敗した失敗した失敗した
+                              <br>
+                              失敗したあたしは失敗
+                          </td>
+                        </tr>
+                      </thead>
+EOF;
+        }else{
+
+        forEach($score as $val){
+          if($tempTableNumber != $val["table_num"] || $tempTableSubNumber != $val["table_sub_num"]){
+echo <<<EOF
+              <thead>
+                <tr>
+EOF;
+                  echo "<th scope='col' colspan='3'>" . $val["table_num"] . "-" . $val["table_sub_num"] . "</th>\n";
+echo <<<EOF
+                </tr>
+              </thead>
+              <tbody>
+EOF;
+              $tempTableNumber = $val["table_num"];
+              $tempTableSubNumber = $val["table_sub_num"];
+            }
+            echo "<tr>\n";
+            if($val["rank"] == null || $val["rank"] == ""){
+              echo "<td>集計中</td>\n";
+            }else{
+              echo "<td>" . $val["rank"] . "</td>\n";
+            }
+            echo "<td><a href='userScore.html?user_num=" . $val["USER_NUM"] . "'>" . $val["USER_NAME"] . "</a></td>\n";
+            if($val["rank_score"] == null || $val["rank_score"] == ""){
+              echo "<td>集計中</td>\n";
+            }else if($val["rank_score"] >= 0){
+              echo "<td>+ " . number_format($val["rank_score"], 1) . "</td>\n";
+            }else{
+              echo "<td>- " . number_format(abs($val["rank_score"]), 1) . "</td>\n";
+            }
+          }
+
+        }
+?>
+        </tbody>
+      </table>
+    </div>
+  </div>
+<?php
+    readfile($_SERVER['DOCUMENT_ROOT']."/sparrow/front/common/template/htmlFooter.html");
+?>
+</html>

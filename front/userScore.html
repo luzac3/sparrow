@@ -5,27 +5,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="/sparrow/front/css/home.css" type="text/css" media="screen">
 <?php
     readfile($_SERVER['DOCUMENT_ROOT']."/sparrow/front/common/template/htmlHeader.html");
 ?>
+<title>雀オフ　点数確認</title>
 </head>
 <body>
   <div class="container">
-  <h1 id="title" class="d-flex align-items-center justify-content-center">点数確認
-<?php
-    if(!empty($_GET["user_num"])){
-      echo "(";
-      echo $myScore[0]["user_name"];
-      echo ")";
-    }
-?>
-  </h1>
+  <h1 id="title" class="d-flex align-items-center justify-content-center">点数確認</h1>
 <?php
     readfile($_SERVER['DOCUMENT_ROOT']."/sparrow/front/common/template/header.html");
 ?>
-    <div class="home_main">
-      <h1 class="h3 mb-3 font-weight-normal">スコア一覧</h1>
+    <div class="main">
+      <h1 class="h3 mb-3 font-weight-normal">スコア一覧
+        <?php
+          if(!empty($_GET["user_num"])){
+            echo "(";
+            echo $myScore[0]["USER_NAME"];
+            echo ")";
+          }
+        ?>
+      </h1>
       <table class="table">
         <thead>
           <tr>
@@ -53,7 +53,7 @@
           if($val["rank_score"] >= 0){
             echo "<td>+ " . number_format($val["rank_score"], 1) . "</td>\n";
           }else{
-            echo "<td>- " . number_format($val["rank_score"], 1) . "</td>\n";
+            echo "<td>- " . number_format(abs($val["rank_score"]), 1) . "</td>\n";
           }
           echo "<tr>\n";
         }

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="/sparrow/front/css/rule.css" type="text/css" media="screen">
+<?php
+    readfile($_SERVER['DOCUMENT_ROOT']."/sparrow/front/common/template/htmlHeader.html");
+?>
+<script src="/sparrow/js/home.js"></script>
+<title>雀オフ　ルールダウンロード</title>
+</head>
+<body>
+  <div class="container">
+  <h1 id="title" class="d-flex align-items-center justify-content-center">ルール</h1>
+<?php
+    readfile($_SERVER['DOCUMENT_ROOT']."/sparrow/front/common/template/header.html");
+?>
+    <div class="main">
+      <img class="mb-4 chun" src="/sparrow/img/bird_suzume_9916 copy.jpg" alt="ちゅん">
+      <p><a href="/sparrow/files/全自動卓麻雀オフ.pdf">競技規則</a></p>
+      <p><a href="/sparrow/files/麻雀オフ・簡易版ルールブック.pdf">簡易版ルールブック</a></p>
+      <p><a href="/sparrow/files/麻雀得点表.pdf">麻雀得点表</a></p>
+    </div>
+  </div>
+<?php
+    readfile($_SERVER['DOCUMENT_ROOT']."/sparrow/front/common/template/htmlFooter.html");
+?>
+</html>

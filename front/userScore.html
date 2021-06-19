@@ -71,7 +71,7 @@
         if($sumScore >= 0){
           echo "<td colspan='4'>+ " . number_format($sumScore, 1) . "</td>\n";
         }else{
-          echo "<td>- " . number_format($sumScore, 1) . "</td>\n";
+          echo "<td>- " . number_format(abs($sumScore), 1) . "</td>\n";
         }
 ?>
         </tbody>

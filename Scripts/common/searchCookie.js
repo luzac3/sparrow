@@ -1,4 +1,4 @@
-function searchCookie(key){
+export function searchCookie(key){
   let cookies = document.cookie; //全てのcookieを取り出して
   let cookiesArray = cookies.split(';'); // ;で分割し配列に
 

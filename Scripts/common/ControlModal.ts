@@ -13,7 +13,7 @@ export class ControlModal {
     // modalの内容書き換え
     this.modalObject.getElementsByClassName('modal-body')[0].textContent = modalBodyMessage;
     this.modal.show();
-    return new Promise(resolve => {
+    return new Promise((resolve: (value?: Event) => void) => {
       const listner = resolve;
       const modalButtons = this.modalObject.getElementsByTagName('button');
       Array.prototype.forEach.call(modalButtons, modalButton => {

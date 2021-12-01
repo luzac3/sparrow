@@ -1,4 +1,4 @@
-function callStored(argArr, storedName, time_out = 1000){
+export function callStored(argArr, storedName, time_out = 1000){
 
     return new Promise((resolve, reject) => {
         $.ajax({

@@ -1,0 +1,5 @@
+Action myphp-script /php.cgi
+AddHandler myphp-script .php .html
+ErrorDocument 403 https://wolfnet-twei.sakura.ne.jp/generalPurpose/general/index.html
+ErrorDocument 404 https://wolfnet-twei.sakura.ne.jp/generalPurpose/general/index.html
+ErrorDocument 500 https://wolfnet-twei.sakura.ne.jp/generalPurpose/general/index.html

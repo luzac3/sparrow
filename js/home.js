@@ -1,7 +1,22 @@
+
 $(document).ready(function(){
   $(".joinButton").on("click",function(){
+    const controlModal = new ControlModal($("#joinModal"));
+
     $(".btn").prop("disabled", true);
-    updateFlg();
+
+    controlModal.openModal(mess);
+
+    $(".modal-footer button").on("click",function(event){
+      const button = event.data("button");
+
+      if(button === "close"){
+        updateFlg();
+        controlModal.clickOk();
+      }else{
+        controlModal.clickCancel();
+      }
+    });
   });
 
   $(".scoreSet").on("click",function(){

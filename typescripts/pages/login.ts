@@ -1,4 +1,5 @@
-import {CallStored} from '../common/callStored';
+import {CallStored} from '../module/callStored';
+import {DiscardFullWidth} from '../module/discardFullWidth';
 
 $(document).ready(function(){
   const callStored = new CallStored();
@@ -36,13 +37,6 @@ $(document).ready(function(){
       err => alert(err)
     );
   });
-
-  $("#inputID").on("keyup",function(){
-    // フォームに全角を入力させない
-    let str = String($(this).val()!);
-    while(str.match(/[^A-Z^a-z\d\_]/)){
-      str=str.replace(/[^A-Z^a-z\d\_]/,"");
-    }
-    $(this).val(str);
-  });
+  
+  new DiscardFullWidth(document.getElementById("inputID")!);
 });

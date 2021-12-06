@@ -9,7 +9,7 @@ class CallStored extends Model{
 
   public function __construct(array $attributes = []) {
     parent::__construct($attributes);
-    require_once("../conection.php");
+    require_once("./common/dbInfo.php");
     $dbInfo = new DbInfo();
   }
 

@@ -1,9 +1,9 @@
 export class DefaultAjax {
-  argArr: [];
+  argArr: {[key:string]: string};
   phpAddr: string;
   timeOut: number;
 
-  constructor(argArr: [], phpAddr: string, timeOut:number = 1000) {
+  constructor(argArr: {[key:string]: string}, phpAddr: string, timeOut:number = 1000) {
     this.argArr = argArr;
     this.phpAddr = phpAddr;
     this.timeOut = timeOut;

@@ -1,25 +1,15 @@
 export class CallStored {
-  argArr: [];
-  storedName: string;
-  timeOut: number;
-
-  constructor(argArr: [], storedName: string, timeOut:number = 1000) {
-    this.argArr = argArr;
-    this.timeOut = timeOut;
-    this.storedName = storedName;
-  }
-
-  callSql(){
+  callSql(argArr: {[key:string]: string} | null, storedName: string, timeOut:number = 1000){
     return new Promise((resolve: (value?: string) => void, reject: (reason?: any) => void) => {
         $.ajax({
             url: "/sparrow/common/php/js_stored.php"
             ,cache: false
-            // ,timeout: time_out
+            ,timeout: timeOut
             ,type:'POST'
             ,dataType: 'json'
             ,data:{
-                argArr: this.argArr
-                ,storedName: this.storedName
+                argArr: argArr
+                ,storedName: storedName
             }
             //,processData: false
             //,contentType: false

@@ -1,5 +1,5 @@
 export class SearchCookie {
-  cookiesArray = [];
+  cookiesArray: string[];
 
   constructor(){
     const cookies = document.cookie;

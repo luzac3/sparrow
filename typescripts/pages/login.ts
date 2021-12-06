@@ -1,12 +1,16 @@
+import {CallStored} from '../common/callStored';
+
 $(document).ready(function(){
+  const callStored = new CallStored();
+
   $(".joinButton").on("click",function(){
     // ajaxで処理を飛ばす
-    callStored(
+    callStored.callSql(
       {
-        id:$("#inputID").val()
+        id:String($("#inputID").val())
       }
       ,"getUser"
-    ).then(function(data){
+    ).then((data: any) => {
       console.log(data);
       // ID誤り
       if(data == null || data == "データ取得エラー"){
@@ -35,7 +39,7 @@ $(document).ready(function(){
 
   $("#inputID").on("keyup",function(){
     // フォームに全角を入力させない
-    let str = $(this).val();
+    let str = String($(this).val()!);
     while(str.match(/[^A-Z^a-z\d\_]/)){
       str=str.replace(/[^A-Z^a-z\d\_]/,"");
     }

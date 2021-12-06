@@ -1,6 +1,6 @@
-import {ControlModal} from '../common/ControlModal';
-import {CallStored} from '../common/callStored';
-import {SearchCookie} from '../common/searchCookie';
+import {ControlModal} from '../module/ControlModal';
+import {CallStored} from '../module/callStored';
+import {SearchCookie} from '../module/searchCookie';
 
 $(document).ready(function() {
   const controlModal = new ControlModal(document.getElementById('joinModal')!);

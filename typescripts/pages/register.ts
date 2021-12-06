@@ -1,5 +1,5 @@
-import {CallStored} from '../common/callStored';
-import {SearchCookie} from '../common/searchCookie';
+import {CallStored} from '../module/callStored';
+import {SearchCookie} from '../module/searchCookie';
 
 $(document).ready(() => {
   const callStored = new CallStored();

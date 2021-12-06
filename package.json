@@ -1,5 +1,5 @@
 {
-  "name": "VehicleVisionDealerWeb",
+  "name": "sparrow",
   "version": "0.1.0",
   "main": "",
   "scripts": {
@@ -9,8 +9,8 @@
     "release": "webpack --mode=production",
     "publish": "npm run release && dotnet publish -c Release"
   },
-  "author": "T.Osugi",
-  "license": "PMC",
+  "author": "luza",
+  "license": "wolfLab",
   "devDependencies": {
     "@types/jquery": "^3.5.9",
     "@types/node": "^13.13.52",

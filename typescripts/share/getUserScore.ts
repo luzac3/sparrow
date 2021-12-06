@@ -1,12 +1,16 @@
+import {CallStored} from '../module/callStored';
+import {DiscardFullWidth} from '../module/discardFullWidth';
+
 $(document).ready(function(){
+  const callStored = new CallStored();
   $(".joinButton").on("click",function(){
     // ajaxで処理を飛ばす
-    callStored(
+    callStored.callSql(
       {
-        id:$("#inputID").val()
+        id: String($("#inputID").val())
       }
       ,"getUserScore"
-    ).then(function(data){
+    ).then((data: any) => {
       console.log(data);
       // ID誤り
       if(data == null){
@@ -25,19 +29,12 @@ $(document).ready(function(){
       if(data[0]["USER_NAME"] != ""){
         location.href = "/sparrow/front/home.html";
       }
-    },function(){
+    }, () => {
       console.log("err");
     }).catch(
       err => alert(err)
     );
   });
 
-  $("#inputID").on("keyup",function(){
-    // フォームに全角を入力させない
-    let str = $(this).val();
-    while(str.match(/[^A-Z^a-z\d\_]/)){
-      str=str.replace(/[^A-Z^a-z\d\_]/,"");
-    }
-    $(this).val(str);
-  });
+  new DiscardFullWidth(document.getElementById("inputID")!);
 });

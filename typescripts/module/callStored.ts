@@ -2,7 +2,7 @@ export class CallStored {
   callSql(argArr: {[key:string]: string} | null, storedName: string, timeOut:number = 1000){
     return new Promise((resolve: (value?: string) => void, reject: (reason?: any) => void) => {
         $.ajax({
-            url: "/sparrow/common/php/js_stored.php"
+            url: "/sparrow/login"
             ,cache: false
             ,timeout: timeOut
             ,type:'POST'

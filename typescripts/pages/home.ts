@@ -1,9 +1,21 @@
 import {ControlModal} from '../common/ControlModal';
-import {callStored} from '../common/callStored';
-import {searchCookie} from '../common/searchCookie';
+import {CallStored} from '../common/callStored';
+import {SearchCookie} from '../common/searchCookie';
 
 $(document).ready(function() {
-  const controlModal = new ControlModal(document.getElementById('joinModal'));
+  const controlModal = new ControlModal(document.getElementById('joinModal')!);
+
+  const searchCookie = new SearchCookie();
+  const userNum = searchCookie.getCookie('user_num');
+
+  if(!userNum){
+    alert("ユーザー番号がありません");
+    return;
+  }
+
+  const callStored = new CallStored();
+  const home = new Home(userNum, callStored);
+
   $('.joinButton').on('click', () => {
 
     $('.btn').prop('disabled', true);
@@ -15,7 +27,7 @@ $(document).ready(function() {
       const button = target.dataset.button;
 
       if (button === 'ok') {
-        updateFlg();
+        home.updateFlg();
         controlModal.clickOk();
       } else {
         controlModal.clickCancel();
@@ -34,35 +46,35 @@ $(document).ready(function() {
       const button = target.dataset.button;
 
       if (button === 'ok') {
-        updateFlg();
+        home.updateFlg();
         controlModal.clickOk();
       } else {
         controlModal.clickCancel();
       }
     });
 
-    callStored(
+    callStored.callSql(
       {
-        user_num: searchCookie('user_num'),
-        table_num: $('#table_number').val(),
-        score: $('#score').val()
+        user_num: userNum,
+        table_num: String($('#table_number').val()),
+        score: String($('#score').val())
       },
       'setScore'
     ).then((data) => {
       console.log(data);
-      callStored(
+      callStored.callSql(
         {
-          user_num: searchCookie('user_num')
+          user_num: userNum
         },
         'rankSet'
       ).then(data => {
         console.log(data);
-        callStored(
+        callStored.callSql(
           null,
           'rankScoreSet'
-        ).then((data) => {
+        ).then(data => {
           console.log(data);
-          updateFlg();
+          home.updateFlg();
         }, function(){
           console.log('err');
         }).catch(
@@ -81,18 +93,28 @@ $(document).ready(function() {
   });
 });
 
-function updateFlg(){
-  callStored(
-    {
-      user_num: searchCookie('user_num')
-    },
-    'updateGameFlg'
-  ).then((data) => {
-    console.log(data);
-    location.reload();
-  }, () => {
-    console.log('err');
-  }).catch(
-    err => alert(err)
-  );
+class Home{
+  userNum: string;
+  callStored: CallStored;
+
+  constructor(userNum: string, callStored: CallStored){
+    this.userNum = userNum;
+    this.callStored = callStored;
+  }
+
+  updateFlg(){
+    this.callStored.callSql(
+      {
+        user_num: this.userNum
+      },
+      'updateGameFlg'
+    ).then(data => {
+      console.log(data);
+      location.reload();
+    }, () => {
+      console.log('err');
+    }).catch(
+      err => alert(err)
+    );
+  }
 }

@@ -11,7 +11,7 @@
 			if(obj === null){
 				throw new Error("未知のエラー")
 			}
-			const parser = function(k: string,v: Object){return v.toString().indexOf('function') === 0 ? eval('('+v+')') : v};
+			const parser = function(_k: string,v: Object){return v.toString().indexOf('function') === 0 ? eval('('+v+')') : v};
 
 			return JSON.parse(obj, parser);
 		}

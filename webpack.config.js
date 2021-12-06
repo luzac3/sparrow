@@ -4,11 +4,11 @@ const webpack = require('webpack');
 
 let entries = {};
 glob
-    .sync("./common/ts/**/*.ts", {
-        ignore: ["./common/ts/**/*.d.ts","./common/ts/modules/**/*"]
+    .sync("./typescripts/**/*.ts", {
+        ignore: ["./scripts/**/*.d.ts","./scripts/modules/**/*"]
     }).
     map(function (file) {
-        const key = file.replace("./common/ts/", "").replace(/\.ts$/, "");
+        const key = file.replace("./typescripts/", "").replace(/\.ts$/, "");
         entries[key] = file;
     });
 
@@ -26,7 +26,7 @@ module.exports = (env, argv) => {
         entry: entries,
 
         output: {
-            path: path.join(__dirname, "./common/js"),
+            path: path.join(__dirname, "./scripts"),
         },
 
         module: {

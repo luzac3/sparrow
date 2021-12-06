@@ -5,7 +5,7 @@ const webpack = require('webpack');
 let entries = {};
 glob
     .sync("./typescripts/**/*.ts", {
-        ignore: ["./scripts/**/*.d.ts","./scripts/modules/**/*"]
+        ignore: ["./typescripts/**/*.d.ts","./typescripts/module/**/*"]
     }).
     map(function (file) {
         const key = file.replace("./typescripts/", "").replace(/\.ts$/, "");

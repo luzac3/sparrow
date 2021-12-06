@@ -1,0 +1,18 @@
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+  <link rel="stylesheet" href="/sparrow/css/common/common.css" type="text/css" media="screen">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function(){
+      // 自分のURLを取得
+      let path = window.location.pathname.split('/');
+      path = path.slice(-1)[0];
+      path = path.split('.')[0];
+
+      $("." + path).attr("tabindex","-1");
+      $("." + path).attr("aria-disabled","true");
+      $("." + path).removeClass('active');
+      $("." + path).addClass('disabled');
+    });
+  </script>

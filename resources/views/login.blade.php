@@ -2,7 +2,7 @@
 <html>
 <head>
 
-@extends('share.htmlHeader)
+@include('share.htmlHeader)
 
 <link rel="stylesheet" href="/sparrow/css/login.css" type="text/css" media="screen">
 <script src="/sparrow/scripts/login.js"></script>
@@ -16,6 +16,6 @@
   <button class="btn btn-lg btn-primary btn-block joinButton" type="button">参加するにゃ</button>
 </form>
 
-@extends('share.htmlFooter)
+@include('share.htmlFooter)
 
 </html>

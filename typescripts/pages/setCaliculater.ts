@@ -25,7 +25,8 @@ class SetCaliculater{
 }
 
 $(document).ready(() => {
-const caliculaterElements = document.getElementsByClassName("caliculater")[0].getElementsByTagName("input");
+  const caliculaterInputElements = document.getElementsByClassName("caliculater")[0].getElementsByTagName("input");
+  const caliculaterSelectElements = document.getElementsByClassName("caliculater")[0].getElementsByTagName("select");
   const inHourElement = document.getElementsByClassName("inHour")[0] as HTMLInputElement;
   const inMinutesElement = document.getElementsByClassName("inMinutes")[0] as HTMLInputElement;
   const outHourElement = document.getElementsByClassName("outHour")[0] as HTMLInputElement;
@@ -47,7 +48,7 @@ const caliculaterElements = document.getElementsByClassName("caliculater")[0].ge
 
   let allocation = setCaliculater.caliculateTimeunit(inHour, inMinutes, outHour, outMinutes, unitOfMinutes);
 
-  ControlEventListner.keyup(caliculaterElements).then(() => {
+  ControlEventListner.keyup(caliculaterInputElements).then(() => {
     inHour = Number(inHourElement.value);
     inMinutes = Number(inMinutesElement.value);
     outHour = Number(outHourElement.value);
@@ -59,7 +60,7 @@ const caliculaterElements = document.getElementsByClassName("caliculater")[0].ge
     showPliceElement.innerHTML = String(amount * allocation / numberOfPeople);
   });
 
-  ControlEventListner.change(caliculaterElements).then(() => {
+  ControlEventListner.change(caliculaterSelectElements).then(() => {
     unitOfMinutes = Number(unitOfMinutesElement.value);
     numberOfPeople = Number(numberOfPeopleElement.value);
 

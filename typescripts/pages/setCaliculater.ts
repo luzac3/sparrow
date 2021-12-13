@@ -1,4 +1,4 @@
-import { ControlEventListner } from "../module/controlEventListner"
+import { ControlEventListner } from "../module/controlEventListner";
 
 class SetCaliculater{
   caliculateTimeunit = (
@@ -13,10 +13,10 @@ class SetCaliculater{
 
     let totalMinutes: number;
 
-    if(totalOutMinutes < totalInMinutes){
+    if (totalOutMinutes < totalInMinutes){
       // 日付をまたいだ場合の処理
       totalMinutes = totalOutMinutes + totalInMinutes;
-    }else{
+    } else {
       totalMinutes = totalOutMinutes - totalInMinutes;
     }
 

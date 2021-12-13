@@ -21,4 +21,4 @@ Route::get('/test', function () {
 });
 Route::get('/login', 'LoginController@index');
 Route::post('/login', 'LoginController@login');
-Route::post('/setCaliculater', return view('setCaliculater'););
+Route::post('/setCaliculater', 'setCaliculaterController@index');

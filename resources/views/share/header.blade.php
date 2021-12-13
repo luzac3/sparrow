@@ -20,6 +20,9 @@
         <li class="nav-item active">
           <a class="nav-link rule" href="rule.html" tabindex="-1" aria-disabled="true">ルールDL</a>
         </li>
+        <li class="nav-item active">
+          <a class="nav-link rule" href="setCaliculater" tabindex="-1" aria-disabled="true">セット料金計算ツール</a>
+        </li>
       </ul>
     </div>
   </nav>

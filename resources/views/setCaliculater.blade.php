@@ -5,7 +5,7 @@
 @extends('share.htmlHeader')
 
 <link rel="stylesheet" href="/sparrow/css/setCaliculater.css" type="text/css" media="screen">
-<script src="/sparrow/scripts/setCaliculater.js"></script>
+<script src="/sparrow/scripts/pages/setCaliculater.js"></script>
 <title>セット料金計算ツール</title>
 </head>
 <body>

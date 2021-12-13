@@ -19,6 +19,6 @@ Route::get('/', function () {
 Route::get('/test', function () {
     return view('test');
 });
-Route::get('/login', 'LoginController@index');
-Route::post('/login', 'LoginController@login');
-Route::get('/setCaliculater', 'SetCaliculaterController@index');
+Route::get('/login', 'App\Http\Controllers\LoginController@index');
+Route::post('/login', 'App\Http\Controllers\LoginController@login');
+Route::get('/setCaliculater', 'App\Http\Controllers\SetCaliculaterController@index');

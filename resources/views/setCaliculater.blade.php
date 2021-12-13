@@ -34,8 +34,8 @@
           加算時間単位：
           <select class="unitOfMinutes" name="">
             <option value="10">10</option>
-            <option value="10">30</option>
-            <option value="10">60</option>
+            <option value="30">30</option>
+            <option value="60">60</option>
           </select>
           分　
         </p>
@@ -47,8 +47,8 @@
         <p>
           人数：
           <select class="numberOfPeople" name="">
-            <option value="10">3</option>
-            <option value="10">4</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
           </select>
           人
         </p>

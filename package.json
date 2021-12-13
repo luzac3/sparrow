@@ -6,7 +6,7 @@
     "build": "webpack --mode development",
     "watch": "webpack -w",
     "start": "webpack-dev-server --host=0.0.0.0 --hot --inline --progress --colors  --history-api-fallback",
-    "release": "webpack --mode=production",
+    "release": "webpack --mode production",
     "publish": "npm run release && dotnet publish -c Release"
   },
   "author": "luza",

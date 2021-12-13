@@ -15,8 +15,8 @@ glob
 module.exports = (env, argv) => {
     const IS_DEVELOPMENT = argv.mode === "development";
 
-    return {
-        devtool: IS_DEVELOPMENT ? "source-map" : "none",
+    const configs  = {
+        //devtool: IS_DEVELOPMENT ? "source-map" : "none",
 
         devServer: {
             index: "Index.html",
@@ -48,4 +48,11 @@ module.exports = (env, argv) => {
             ],
         },
     }
+
+    if (IS_DEVELOPMENT) {
+      // development であれば、devtool を追加
+      configs.devtool = 'source-map';
+    }
+
+    return configs;
 };

@@ -1,4 +1,4 @@
-import {ControlModal} from '../module/ControlModal';
+import {ControlModal} from '../module/controlModal';
 import {CallStored} from '../module/callStored';
 import {SearchCookie} from '../module/searchCookie';
 

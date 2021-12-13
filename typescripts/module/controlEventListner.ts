@@ -1,97 +1,94 @@
 export class ControlEventListner{
- private static promise = (elements: HTMLCollection | HTMLElement, eventName: string) => {
-   return new Promise((resolve: (value?: Event) => void) => {
-     const listner = resolve;
-       Array.prototype.forEach.call(elements, element => {
-         element.addEventListener(
-           eventName,
-           listner
-         );
-       });
+ private static addEvent = (elements: HTMLCollection | HTMLElement, eventName: string,  callback: () => void) => {
+    Array.prototype.forEach.call(elements, element => {
+      element.addEventListener(
+        eventName,
+        callback
+      );
    });
  }
 
-  static click(elements: HTMLCollection | HTMLElement): Promise<Event> {
-    return this.promise(elements, "click");
+  static click(elements: HTMLCollection | HTMLElement, callback: () => void): void {
+    this.addEvent(elements, "click", callback);
   }
 
-  static dblclick(elements: HTMLCollection | HTMLElement): Promise<Event> {
-    return this.promise(elements, "dblclick");
+  static dblclick(elements: HTMLCollection | HTMLElement, callback: () => void): void {
+    this.addEvent(elements, "dblclick", callback);
   }
 
-  static change(elements: HTMLCollection | HTMLElement): Promise<Event> {
-    return this.promise(elements, "change");
+  static change(elements: HTMLCollection | HTMLElement, callback: () => void): void {
+    this.addEvent(elements, "change", callback);
   }
 
-  static load(elements: HTMLCollection | HTMLElement): Promise<Event> {
-    return this.promise(elements, "load");
+  static load(elements: HTMLCollection | HTMLElement, callback: () => void): void {
+    this.addEvent(elements, "load", callback);
   }
 
-  static submit(elements: HTMLCollection | HTMLElement): Promise<Event> {
-    return this.promise(elements, "submit");
+  static submit(elements: HTMLCollection | HTMLElement, callback: () => void): void {
+    this.addEvent(elements, "submit", callback);
   }
 
-  static reset(elements: HTMLCollection | HTMLElement): Promise<Event> {
-    return this.promise(elements, "submit");
+  static reset(elements: HTMLCollection | HTMLElement, callback: () => void): void {
+    this.addEvent(elements, "submit", callback);
   }
 
-  static select(elements: HTMLCollection | HTMLElement): Promise<Event> {
-    return this.promise(elements, "submit");
+  static select(elements: HTMLCollection | HTMLElement, callback: () => void): void {
+    this.addEvent(elements, "submit", callback);
   }
 
-  static input(elements: HTMLCollection | HTMLElement): Promise<Event> {
-    return this.promise(elements, "submit");
+  static input(elements: HTMLCollection | HTMLElement, callback: () => void): void {
+    this.addEvent(elements, "submit", callback);
   }
 
-  static mouseup(elements: HTMLCollection | HTMLElement): Promise<Event> {
-    return this.promise(elements, "mouseup");
+  static mouseup(elements: HTMLCollection | HTMLElement, callback: () => void): void {
+    this.addEvent(elements, "mouseup", callback);
   }
 
-  static mousedown(elements: HTMLCollection | HTMLElement): Promise<Event> {
-    return this.promise(elements, "mousedown");
+  static mousedown(elements: HTMLCollection | HTMLElement, callback: () => void): void {
+    this.addEvent(elements, "mousedown", callback);
   }
 
-  static mouseover(elements: HTMLCollection | HTMLElement): Promise<Event> {
-    return this.promise(elements, "mouseover");
+  static mouseover(elements: HTMLCollection | HTMLElement, callback: () => void): void {
+    this.addEvent(elements, "mouseover", callback);
   }
 
-  static mouseleave(elements: HTMLCollection | HTMLElement): Promise<Event> {
-    return this.promise(elements, "mouseleave");
+  static mouseleave(elements: HTMLCollection | HTMLElement, callback: () => void): void {
+    this.addEvent(elements, "mouseleave", callback);
   }
 
-  static mousemove(elements: HTMLCollection | HTMLElement): Promise<Event> {
-    return this.promise(elements, "mousemove");
+  static mousemove(elements: HTMLCollection | HTMLElement, callback: () => void): void {
+    this.addEvent(elements, "mousemove", callback);
   }
 
-  static mouseenter(elements: HTMLCollection | HTMLElement): Promise<Event> {
-    return this.promise(elements, "mouseenter");
+  static mouseenter(elements: HTMLCollection | HTMLElement, callback: () => void): void {
+    this.addEvent(elements, "mouseenter", callback);
   }
 
-  static mouseout(elements: HTMLCollection | HTMLElement): Promise<Event> {
-    return this.promise(elements, "mouseout");
+  static mouseout(elements: HTMLCollection | HTMLElement, callback: () => void): void {
+    this.addEvent(elements, "mouseout", callback);
   }
 
-  static keypress(elements: HTMLCollection | HTMLElement): Promise<Event> {
-    return this.promise(elements, "keypress");
+  static keypress(elements: HTMLCollection | HTMLElement, callback: () => void): void {
+    this.addEvent(elements, "keypress", callback);
   }
 
-  static keyup(elements: HTMLCollection | HTMLElement): Promise<Event> {
-    return this.promise(elements, "keyup");
+  static keyup(elements: HTMLCollection | HTMLElement, callback: () => void): void {
+    this.addEvent(elements, "keyup", callback);
   }
 
-  static keydown(elements: HTMLCollection | HTMLElement): Promise<Event> {
-    return this.promise(elements, "keydown");
+  static keydown(elements: HTMLCollection | HTMLElement, callback: () => void): void {
+    this.addEvent(elements, "keydown", callback);
   }
 
-  static scroll(elements: HTMLCollection | HTMLElement): Promise<Event> {
-    return this.promise(elements, "scroll");
+  static scroll(elements: HTMLCollection | HTMLElement, callback: () => void): void {
+    this.addEvent(elements, "scroll", callback);
   }
 
-  static focus(elements: HTMLCollection | HTMLElement): Promise<Event> {
-    return this.promise(elements, "focus");
+  static focus(elements: HTMLCollection | HTMLElement, callback: () => void): void {
+    this.addEvent(elements, "focus", callback);
   }
 
-  static blur(elements: HTMLCollection | HTMLElement): Promise<Event> {
-    return this.promise(elements, "blur");
+  static blur(elements: HTMLCollection | HTMLElement, callback: () => void): void {
+    this.addEvent(elements, "blur", callback);
   }
 }

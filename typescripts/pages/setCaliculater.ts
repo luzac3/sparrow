@@ -48,7 +48,7 @@ $(document).ready(() => {
 
   let allocation = setCaliculater.caliculateTimeunit(inHour, inMinutes, outHour, outMinutes, unitOfMinutes);
 
-  ControlEventListner.keyup(caliculaterInputElements).then(() => {
+  ControlEventListner.keyup(caliculaterInputElements, () => {
     inHour = Number(inHourElement.value);
     inMinutes = Number(inMinutesElement.value);
     outHour = Number(outHourElement.value);
@@ -60,7 +60,7 @@ $(document).ready(() => {
     showPliceElement.innerHTML = String(amount * allocation / numberOfPeople);
   });
 
-  ControlEventListner.change(caliculaterSelectElements).then(() => {
+  ControlEventListner.change(caliculaterSelectElements, () => {
     unitOfMinutes = Number(unitOfMinutesElement.value);
     numberOfPeople = Number(numberOfPeopleElement.value);
 

@@ -16,7 +16,6 @@ module.exports = (env, argv) => {
     const IS_DEVELOPMENT = argv.mode === "development";
 
     const configs  = {
-        //devtool: IS_DEVELOPMENT ? "source-map" : "none",
 
         devServer: {
             index: "Index.html",

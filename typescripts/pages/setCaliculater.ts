@@ -47,7 +47,7 @@ const caliculaterElements = document.getElementsByClassName("caliculater")[0].ge
 
   let timeUnit = setCaliculater.caliculateTimeunit(inHour, inMinutes, outHour, outMinutes, unitOfMinutes);
 
-  ControlEventListner.keyup(caliculaterElements).then(()=>{
+  ControlEventListner.keyup(caliculaterElements).then(() => {
     inHour = Number(inHourElement.value);
     inMinutes = Number(inMinutesElement.value);
     outHour = Number(outHourElement.value);
@@ -59,7 +59,7 @@ const caliculaterElements = document.getElementsByClassName("caliculater")[0].ge
     showPliceElement.innerHTML = String(amount * timeUnit / numberOfPeople);
   });
 
-  ControlEventListner.change(caliculaterElements).then(()=>{
+  ControlEventListner.change(caliculaterElements).then(() => {
     unitOfMinutes = Number(unitOfMinutesElement.value);
     numberOfPeople = Number(numberOfPeopleElement.value);
 

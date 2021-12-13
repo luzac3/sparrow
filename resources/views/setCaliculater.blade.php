@@ -2,7 +2,7 @@
 <html>
 <head>
 
-@extends('share.htmlHeader')
+@include('share.htmlHeader')
 
 <link rel="stylesheet" href="/sparrow/css/setCaliculater.css" type="text/css" media="screen">
 <script src="/sparrow/scripts/pages/setCaliculater.js"></script>
@@ -55,6 +55,6 @@
   </div>
 </form>
 
-@extends('share.htmlFooter')
+@include('share.htmlFooter')
 
 </html>

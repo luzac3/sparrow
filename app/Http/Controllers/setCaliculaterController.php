@@ -7,6 +7,6 @@ class SetCaliculaterController extends Controller
 {
   public function index()
   {
-    return view('setCaliculater.model');
+    return view('setCaliculater');
   }
 }

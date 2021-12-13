@@ -1,6 +1,7 @@
 <?php
 
-namespace controllers;
+namespace App\Http\Controllers;
+use App\Http\Controllers\Controller;
 
 use App\Models\callStored;
 
@@ -9,7 +10,7 @@ class LoginController extends Controller
   public function index()
   {
     // ログインページではユーザーIDはない
-    return view('login.model');
+    return view('login');
   }
 
   public function login($storedName, $argArr) {

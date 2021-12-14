@@ -6,7 +6,7 @@ $(document).ready(() => {
   const searchCookie = new SearchCookie();
   const userNum = searchCookie.getCookie('user_num');
 
-  if(!userNum){
+  if (!userNum){
     alert("ユーザー番号がありません");
     return;
   }
@@ -16,13 +16,13 @@ $(document).ready(() => {
     callStored.callSql(
       {
         user_num: userNum
-        ,user_name: String($("#inputName").val())
+        , user_name: String($("#inputName").val())
       }
-      ,"registerUserName"
+      , "registerUserName"
     ).then((data: any) => {
       console.log(data);
 
-      if(data["exit_cd"] == 0){
+      if (data["exit_cd"] === 0){
 
         location.href = "/sparrow/front/home.html";
       }

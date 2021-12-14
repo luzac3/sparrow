@@ -8,7 +8,7 @@ $(document).ready(function() {
   const searchCookie = new SearchCookie();
   const userNum = searchCookie.getCookie('user_num');
 
-  if(!userNum){
+  if (!userNum){
     alert("ユーザー番号がありません");
     return;
   }

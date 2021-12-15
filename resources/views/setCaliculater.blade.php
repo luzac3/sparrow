@@ -17,40 +17,37 @@
     <form class="form-signin">
       <div class="caliculater">
         <p>
-          入場時間：
+          <span>入場時間：</span>
           <input class="inHour" type="number" name="" value="">
-          時　
+          <span>時　</span>
           <input class="inMinutes" type="number" name="" value="">
-          分
+          <span>分</span>
         </p>
         <p>
-          退場時間：
+          <span>退場時間：</span>
           <input class="outHour" type="number" name="" value="">
-          時　
+          <span>時　</span>
           <input class="outMinutes" type="number" name="" value="">
-          分
+          <span>分</span>
         </p>
         <p>
-          加算時間単位：
+          金額：
+          <input class="amount" type="number" name="" value="">
+          <span>円　×　</span>
           <select class="unitOfMinutes" name="">
             <option value="10">10</option>
             <option value="30">30</option>
             <option value="60">60</option>
           </select>
-          分　
+          <span>分</span>
         </p>
         <p>
-          金額：
-          <input class="amount" type="number" name="" value="">
-          円　
-        </p>
-        <p>
-          人数：
+          <span>人数：</span>
           <select class="numberOfPeople" name="">
             <option value="3">3</option>
             <option value="4">4</option>
           </select>
-          人
+          <span>人</span>
         </p>
         <br>
         <p class="plice">一人：<span class="showPlice"></span>円</p>

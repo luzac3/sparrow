@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="/sparrow/css/home.css" type="text/css" media="screen">
+
+@include('share.htmlHeader)
+
+<script src="/sparrow/scripts/home.js"></script>
+<title>雀オフ　ホーム</title>
+</head>
+<body>
+  <div class="container">
+  <h1 id="title" class="d-flex align-items-center justify-content-center">ホーム</h1>
+
+    @include('share.header)
+
+    <div class="main">
+      <img class="mb-4 chun" src="/sparrow/img/bird_suzume_9916 copy.jpg" alt="ちゅん">
+<?php
+      if({{ $gameFLg }} == 1){
+echo <<<EOF
+        <h1 class="h3 mb-3 font-weight-normal">ゲーム中にゃ</h1>
+        <input type="number" id="table_number" class="table_number score_input" placeholder="卓番号" required autofocus>
+        // fixme 入力式でなくカウンター式にするべき(ユーザ人数から卓数を割り出せばいい)
+        <input type="number" id="score" class="score score_input" placeholder="スコア" required autofocus>
+        <button class="btn btn-lg btn-primary btn-block scoreSet" type="button">点数確定にゃ</button>
+EOF;
+      }else{
+echo <<<EOF
+        <h1 class="h3 mb-3 font-weight-normal">フリーにゃ</h1>
+        <button class="btn btn-lg btn-primary btn-block joinButton" type="button">ゲーム開始にゃ</button>
+EOF;
+      }
+?>
+    </div>
+  </div>
+  <div class="modal" id="joinModal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="label1">ゲーム参加</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="閉じる"></button>
+        </div>
+        <div class="modal-body">
+          のゲームに参加します(jsでソース書き換え)
+        </div>
+        <div class="modal-footer">
+          <button type="button" data-button="close" class="btn btn-secondary">Close</button>
+          <button type="button" data-button="ok" class="btn btn-primary">OK</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  @include('share.htmlFooter)
+
+</html>

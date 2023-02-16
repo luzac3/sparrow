@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<?php
+    readfile($_SERVER['DOCUMENT_ROOT']."/sparrow/Views/share/template/htmlHeader.html");
+?>
+
+<link rel="stylesheet" href="/sparrow/css/login.css" type="text/css" media="screen">
+<script src="/sparrow/scripts/eventRegister.js"></script>
+<title>雀オフ　管理</title>
+</head>
+<body>
+  <div class="container">
+    <div class="main">
+      <p><a href="/sparrow/Views/admin/eventRegEdit.html">新規登録</a></p>
+      <tbody>
+<?php
+        require_once $root . '/sparrow/common/php/callStored.php';
+        $eventList = callStored("getEvent",null);
+
+        forEach($eventList as $event){
+echo <<<EOF
+          <tr>
+EOF;
+            echo "<td>" . $event["event_id"] . "</td>\n";
+            echo "<td>" . $event["event_name"] . "</td>\n";
+            echo "<td>" . $event["date"] . "</td>\n";
+            echo "<td><a href='/sparrow/Views/admin/eventRegEdit.html?event_id=" . $event["event_id"] . "'>編集</a></td>\n";
+            echo "<td><button type='button' class='copy' data_id='" . $event["event_id"] . "'>URLコピー</button></td>\n";
+          echo "</tr>\n";
+        }
+?>
+      </tbody>
+    </div>
+  </div>
+<?php
+    readfile($_SERVER['DOCUMENT_ROOT']."/sparrow/Views/share/template/htmlFooter.html");
+?>
+</html>

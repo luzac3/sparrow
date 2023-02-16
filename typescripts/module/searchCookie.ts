@@ -9,10 +9,10 @@ export class SearchCookie {
   getCookie(key: string) {
     let cArray = [];
 
-    for(let c of this.cookiesArray){
+    for (let c of this.cookiesArray){
       cArray = c.split('='); //さらに=で分割して配列に
-      if( cArray[0].trim() === key){ // 取り出したいkeyと合致したら
-          return cArray[1].trim(); 
+      if ( cArray[0].trim() === key){ // 取り出したいkeyと合致したら
+          return cArray[1].trim();
       }
     }
 

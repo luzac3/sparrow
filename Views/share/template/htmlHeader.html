@@ -16,3 +16,11 @@
       $("." + path).addClass('disabled');
     });
   </script>
+
+  <?php
+      if(!empty($_GET["event_id"])){
+        $eventId = $_GET["event_id"];
+      }else{
+        $eventId = "";
+      }
+  ?>

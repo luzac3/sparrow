@@ -1,7 +1,6 @@
 <?php
     $root = $_SERVER["DOCUMENT_ROOT"];
     require_once $root . '/sparrow/common/php/callStored.php';
-    $score = callStored("getResult",null);
 ?>
 <!DOCTYPE html>
 <html>
@@ -16,6 +15,8 @@
   <h1 id="title" class="d-flex align-items-center justify-content-center">結果一覧</h1>
 <?php
     readfile($_SERVER['DOCUMENT_ROOT']."/sparrow/Views/share/template/header.html");
+    
+    $score = callStored("getResult", array('event_id'=>$eventId));
 ?>
     <div class="main">
       <h1 class="h3 mb-3 font-weight-normal">結果一覧

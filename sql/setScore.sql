@@ -11,6 +11,7 @@ DELIMITER //
 --   ログイン
 --
 -- 【引数】
+--   _event_id            :イベントID
 --   _user_num            :ユーザ番号
 --   _table_number            :卓番号
 --   _score            :スコア
@@ -23,9 +24,11 @@ DELIMITER //
 -- --------------------------------------------------------------------------------------------
 -- 【更新履歴】
 --  2019.8.15 大杉　新規作成
+--  2023.2.16 大杉　イベントID追加
 -- ********************************************************************************************
 CREATE PROCEDURE `setScore`(
-    IN `_user_num` CHAR(2)
+    IN `_event_id` CHAR(4)
+    , IN `_user_num` CHAR(2)
     , IN `_table_number` CHAR(1)
     , IN `_score` INTEGER
     , OUT `exit_cd` INTEGER
@@ -45,9 +48,10 @@ BEGIN
 
         SET @query = CONCAT("
             insert into score
-              (user_num,table_num,table_sub_num,score)
+              (event_id, user_num,table_num,table_sub_num,score)
               values(
-                '",_user_num,"'
+                '",_event_id,"'
+                ,'",_user_num,"'
                 ,'",_table_number,"'
                 ,(
                   select distinct new_table_num from (

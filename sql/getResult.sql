@@ -11,6 +11,7 @@ DELIMITER //
 --   順位表
 --
 -- 【引数】
+--    _event_id         :イベントID
 --
 --
 -- 【戻り値】
@@ -20,9 +21,11 @@ DELIMITER //
 -- --------------------------------------------------------------------------------------------
 -- 【更新履歴】
 --  2019.8.15 大杉　新規作成
+--  2023.2.16 大杉　イベントID追加
 -- ********************************************************************************************
 CREATE PROCEDURE `getResult`(
-    OUT `exit_cd` INTEGER
+    IN `_event_id` CHAR(4)
+    ,OUT `exit_cd` INTEGER
 )
 COMMENT '結果一覧取得処理'
 
@@ -49,7 +52,8 @@ BEGIN
                 m_user mu
             LEFT OUTER JOIN score sc
               on mu.USER_NUM = sc.USER_NUM
-            where sc.rank is not null
+            where event_id = '",_event_id,"'
+            and sc.rank is not null
             order by sc.table_num,sc.table_sub_num,sc.rank asc
             ;
         ")

@@ -11,6 +11,7 @@ DELIMITER //
 --   ログイン
 --
 -- 【引数】
+--    _event_id         :イベントID
 --
 --
 -- 【戻り値】
@@ -20,9 +21,11 @@ DELIMITER //
 -- --------------------------------------------------------------------------------------------
 -- 【更新履歴】
 --  2019.8.15 大杉　新規作成
+--  2023.2.16 大杉　イベントID追加
 -- ********************************************************************************************
 CREATE PROCEDURE `rankScoreSet`(
-    OUT `exit_cd` INTEGER
+    IN `_event_id` CHAR(4)
+    , OUT `exit_cd` INTEGER
 )
 
 COMMENT 'ランクスコア更新処理'
@@ -48,7 +51,8 @@ BEGIN
               ELSE null
             END
           )
-          where rank is not null
+          where '",_event_id,"'
+          and rank is not null
           and rank_score is null;
       ")
       ;

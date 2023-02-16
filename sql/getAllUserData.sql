@@ -11,6 +11,7 @@ DELIMITER //
 --   ログイン
 --
 -- 【引数】
+--   _event_id            :イベントID
 --   _user_num            :ユーザ番号
 --
 --
@@ -21,9 +22,11 @@ DELIMITER //
 -- --------------------------------------------------------------------------------------------
 -- 【更新履歴】
 --  2019.8.15 大杉　新規作成
+--  2023.2.16 大杉　イベントID追加
 -- ********************************************************************************************
 CREATE PROCEDURE `getAllUserData`(
-    IN `_user_num` CHAR(50)
+    IN `_event_id` CHAR(4)
+    , IN `_user_num` CHAR(50)
     , OUT `exit_cd` INTEGER
 )
 COMMENT 'ユーザ情報取得処理'
@@ -48,6 +51,8 @@ BEGIN
             FROM
                 m_user
             WHERE
+                EVENT_ID = '",_event_id,"'
+            AND
                 USER_NUM = '",_user_num,"'
             ;
         ")

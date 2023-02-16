@@ -1,14 +1,19 @@
 import {CallStored} from '../module/callStored';
 import {DiscardFullWidth} from '../module/discardFullWidth';
+import {GetUrlParams} from '../module/getUrlParams';
 
 $(document).ready(function(){
   const callStored = new CallStored();
+  const getUrlParams = new GetUrlParams();
+
+  const eventId = getUrlParams.getUrlParams("event_id");
 
   $(".joinButton").on("click",function(){
     // ajaxで処理を飛ばす
     callStored.callSql(
       {
-        id:String($("#inputID").val())
+        event_id: eventId,
+        user_id: String($("#inputID").val())
       }
       ,"getUser"
     ).then((data: any) => {
@@ -37,6 +42,6 @@ $(document).ready(function(){
       err => alert(err)
     );
   });
-  
+
   new DiscardFullWidth(document.getElementById("inputID")!);
 });

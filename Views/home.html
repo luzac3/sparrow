@@ -24,8 +24,19 @@
       if($gameFLg == 1){
 echo <<<EOF
         <h1 class="h3 mb-3 font-weight-normal">ゲーム中にゃ</h1>
-        <input type="number" id="table_number" class="table_number score_input" placeholder="卓番号" required autofocus>
-        // fixme 入力式でなくカウンター式にするべき(ユーザ人数から卓数を割り出せばいい)
+        <p>
+          卓番号:<select class="table_number">
+            <option value="1" selected>1</option>
+EOF;
+          require_once $root . '/sparrow/common/php/stored.php';
+          $event = stored("getEvent", array('event_id'=>$eventId));
+          for($i=2; $i <= $event[0]["table_number"]; $i++){
+            echo "<option value='" . $i . "'>" . $i . "</option>"
+          }
+          </select>
+        </p>
+
+echo <<<EOF
         <input type="number" id="score" class="score score_input" placeholder="スコア" required autofocus>
         <button class="btn btn-lg btn-primary btn-block scoreSet" type="button">点数確定にゃ</button>
 EOF;

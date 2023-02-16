@@ -1,6 +1,5 @@
 <?php
     $root = $_SERVER["DOCUMENT_ROOT"];
-    require_once $root . '/sparrow/server/getRanking.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -23,6 +22,12 @@
   </h1>
 <?php
     readfile($_SERVER['DOCUMENT_ROOT']."/sparrow/Views/share/template/header.html");
+    
+    require_once $root . '/sparrow/common/php/stored.php';
+
+    $ranking = stored(
+      "getRanking",array('event_id'=>$eventId)
+    );
 ?>
     <div class="main">
       <h1 class="h3 mb-3 font-weight-normal">順位</h1>

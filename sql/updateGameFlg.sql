@@ -11,6 +11,7 @@ DELIMITER //
 --   ログイン
 --
 -- 【引数】
+--   _event_id            :イベントID
 --   _user_num            :ユーザ番号
 --
 --
@@ -21,9 +22,11 @@ DELIMITER //
 -- --------------------------------------------------------------------------------------------
 -- 【更新履歴】
 --  2019.8.15 大杉　新規作成
+--  2023.2.16 大杉　イベントID追加
 -- ********************************************************************************************
 CREATE PROCEDURE `updateGameFlg`(
-    IN `_user_num` CHAR(2)
+    IN `_event_id` CHAR(4)
+    , IN `_user_num` CHAR(2)
     , OUT `exit_cd` INTEGER
 )
 COMMENT 'フラグアップデート処理'
@@ -42,7 +45,8 @@ BEGIN
         SET @query = CONCAT("
             update m_user
               set game_flg = 1 - ABS(game_flg)
-            where user_num = '",_user_num,"'
+            where event_id = '",_event_id,"'
+            and user_num = '",_user_num,"'
             ;
         ")
         ;

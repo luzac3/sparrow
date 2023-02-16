@@ -11,6 +11,7 @@ DELIMITER //
 --   ログイン
 --
 -- 【引数】
+--   _event_id            :イベントID
 --   _user_num            :ユーザ番号
 --
 --
@@ -21,9 +22,11 @@ DELIMITER //
 -- --------------------------------------------------------------------------------------------
 -- 【更新履歴】
 --  2019.8.15 大杉　新規作成
+--  2023.2.16 大杉　イベントID追加
 -- ********************************************************************************************
 CREATE PROCEDURE `getUserScore`(
-    IN `_user_num` CHAR(50)
+    IN `_event_id` CHAR(4)
+    ,  IN `_user_num` CHAR(50)
     , OUT `exit_cd` INTEGER
 )
 COMMENT 'ユーザスコア取得処理'
@@ -41,7 +44,8 @@ BEGIN
 
         SET @query = CONCAT("
             SELECT
-                mu.USER_NUM
+                mu.EVENT_ID
+                ,mu.USER_NUM
                 ,mu.USER_ID
                 ,mu.USER_NAME
                 ,mu.GAME_FLG
@@ -55,6 +59,8 @@ BEGIN
             LEFT OUTER JOIN score sc
               on mu.USER_NUM = sc.USER_NUM
             WHERE
+                mu.EVENT_ID = '",_event_id,"'
+            AND
                 mu.USER_NUM = '",_user_num,"'
             order by sc.table_sub_num asc
             ;

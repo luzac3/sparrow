@@ -24,12 +24,12 @@ $(document).ready(function(){
 
       // ユーザ名が登録されていない
       if (data[0]["USER_NAME"] === ""){
-        location.href = "/sparrow/front/register.html";
+        location.href = "/sparrow/Views/register.html";
       }
 
       // ユーザ名が登録されている
       if (data[0]["USER_NAME"] !== ""){
-        location.href = "/sparrow/front/home.html";
+        location.href = "/sparrow/Views/home.html";
       }
     }, function(){
       console.log("err");
@@ -38,5 +38,5 @@ $(document).ready(function(){
     );
   });
 
-  new DiscardFullWidth(document.getElementById("inputID")!);
+  new DiscardFullWidth().discardFullWidth(document.getElementById("inputID")!);
 });
